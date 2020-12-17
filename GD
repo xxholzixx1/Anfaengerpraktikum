@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.constants as const
+import uncertainties.unumpy as unp
+import uncertainties as unc
+
+
+#aufgabe1
+m1=np.array([2,3,4,5,6])
+x=np.array([1.6,2.7,3.2,3.5,4.0])
+
+m,n = np.polyfit(m1, x, deg=1, cov=True)
+err = np.sqrt(np.diag(n))
+print('Steigung und startpunkt der Ausgleichsgerade')
+print (m)
+print('Fehler der ausgleichsgerade')
+print(err)
+
+k=const.g/m[0]
+
+print('k=')
+print(k)
+
+plt.rcParams['figure.figsize'] = (10, 5)
+plt.rcParams['font.size'] = 12
+plt.rcParams['lines.linewidth'] = 0.75
+
+plt.plot(m1,x,'+r', label="Werte von T")
+plt.plot(m1, m[0]*m1+m[1], '-k',label='Regression von T')
+#plt.xlabel('[1/T] in K')
+#plt.ylabel('[ln(p/p0) in Pas]') 
+plt.tight_layout()
+plt.legend()
+plt.grid()
+plt.show()
+
+#aufgabe 2
+
+g=np.array([60,80,100,110,120,125])
+b=np.array([285,142,117,85,86,82])
+
+def poly(g,b):
+    return 1/((1/g)+(1/b))
+Brennweitef = poly(g,b)
+print('Brennweite f')
+print (Brennweitef)
+
+
