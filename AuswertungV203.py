@@ -10,6 +10,7 @@ TemperatureT1 = np.array([22+273.15,26+273.15,40+273.15,51+273.15,58+273.15,64+2
 #umrechnung des Drucks von bar zu Pascal
 PressureP1 = PressureP1*10**2
 
+
 print('Druck in Pascal')
 print (PressureP1)
 print('Temperatur in Kelvin')
@@ -68,8 +69,8 @@ plt.rcParams['lines.linewidth'] = 0.75
 
 plt.plot(Kehrewert,Logarytmus,'+r', label="Werte von T")
 plt.plot(Kehrewert, m[0]*Kehrewert+m[1], '-k',label='Regression von T')
+plt.ylabel('[ln(p/p0)] in Pas')
 plt.xlabel('[1/T] in K')
-plt.ylabel('[ln(p/p0) in Pas]') 
 plt.tight_layout()
 plt.legend()
 plt.grid()
